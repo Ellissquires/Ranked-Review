@@ -7,9 +7,11 @@ def intro_embed():
 
                           1️⃣ `!add_summoner`
 
-                          2️⃣ `!leaderboard`
+                          2️⃣ `!remove_summoner`
 
-                          3️⃣ `!remove_summoner`
+                          3️⃣ `!leaderboard`
+
+                          3️⃣ `!display_summoners`
                           """,
         "color": 16580705
     })
@@ -17,4 +19,16 @@ def intro_embed():
     embed.set_footer(text=footer_text)
 
     return embed
+
+def leaderboard_embed(leaderboard):
+    embed = discord.Embed().from_dict({
+        "title": "Ranked Review | Summoners",
+        "description": leaderboard,
+        "color": 16580705
+    })
+    footer_text = "If you experience any problems with this bot please contact Ellis"
+    embed.set_footer(text=footer_text)
+
+    return embed
+
 

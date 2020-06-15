@@ -1,4 +1,5 @@
 from riotwatcher import LolWatcher, ApiError
+import time
 
 
 class RankedStats():
@@ -6,7 +7,9 @@ class RankedStats():
         self.engine = LolWatcher(api_token)
         self.region = region
 
-    def fetch_stats(self, summoner_name):
+    def fetch_ranked_stats(self, summoner_name):
+        print(f"Fetching stats for {summoner_name}...")
+        start_time = time.time()
         try:
             response = self.engine.summoner.by_name(self.region, summoner_name)
             ranked_stats = self.engine.league.by_summoner(self.region, response['id'])
@@ -21,4 +24,5 @@ class RankedStats():
             else:
                 raise
 
-        
+        elapsed_time = time.time() - start_time
+        print(f"Stats retrieved in {elapsed_time:.2f} seconds")
